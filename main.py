@@ -12,7 +12,7 @@ from source.a_ok_vqa_in_context_learning import val_in_context_learning_a_ok_vqa
 from source.a_ok_vqa_in_context_learning import test_in_context_learning_a_ok_vqa, test_in_context_learning_a_ok_vqa_with_mcan
 
 from config import get_config
-from transformers import LlamaForCausalLM, LlamaTokenizer
+from transformers import AutoModelForCausalLM, AutoTokenizer
 from transformers import AutoProcessor, BlipForImageTextRetrieval
 from transformers import set_seed
 
@@ -36,8 +36,8 @@ path_to_save_preds = cnf.path_to_save_preds
 
 #load Llama model
 # "meta-llama/Llama-2-13b-hf"
-llama_model = LlamaForCausalLM.from_pretrained(cnf.llama_path)
-llama_tokenizer = LlamaTokenizer.from_pretrained(cnf.llama_path)
+llama_model = AutoModelForCausalLM.from_pretrained(cnf.llama_path)
+llama_tokenizer = AutoTokenizer.from_pretrained(cnf.llama_path)
 llama_model = llama_model.to(device, dtype=torch.float16)
 
 #load the blip model 
